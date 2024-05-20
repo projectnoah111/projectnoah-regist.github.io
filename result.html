@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>결과 화면</title>
+<style>
+    body {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 60px;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .title {
+        color: #008ED8;
+        font-size: 100px;
+        margin-bottom: 20px;
+    }
+    .result {
+        font-size: 40px;
+        color: #ffffff;
+        text-align: center;
+    }
+    input[type="button"] {
+        font-size: 40px;
+        margin: 10px;
+        padding: 10px;
+        border: none;
+        background-color: #ffffff;
+        color: #2d2d2d;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <p class="title">결과 화면</p>
+        <div id="resultInfo" class="result"></div>
+        <input type="button" value="비상탈출 우주선 가동 결과 확인하기" onclick="viewFinalResult()">
+    </div>
+    <script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const registered = JSON.parse(urlParams.get('registered'));
+        const resultDiv = document.getElementById('resultInfo');
+        registered.forEach((passenger, index) => {
+            const p = document.createElement('p');
+            p.textContent = `탑승자 ${index + 1}: ${passenger.name}`;
+            resultDiv.appendChild(p);
+        });
+    }
+
+    function viewFinalResult() {
+        window.location.href = "final.html";
+    }
+    </script>
+</body>
+</html>

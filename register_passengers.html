@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>비상 탈출 우주선 탑승자 등록</title>
+<style>
+    body {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 60px;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .title {
+        color: #008ED8;
+        font-size: 100px;
+        margin-bottom: 20px;
+    }
+    .options {
+        font-size: 40px;
+    }
+    .step {
+        color: #ffffff;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    input[type="radio"] {
+        margin: 20px;
+    }
+    input[type="button"] {
+        font-size: 40px;
+        margin: 10px;
+        padding: 10px;
+        border: none;
+        background-color: #ffffff;
+        color: #2d2d2d;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <p class="title">비상 탈출 우주선 탑승자 등록</p>
+        <div id="stepInfo" class="step"></div>
+        <form id="registrationForm">
+            <div class="options">
+                <label><input type="radio" name="passenger" value="노은혜"> 노은혜</label><br>
+                <label><input type="radio" name="passenger" value="최명석"> 최명석</label><br>
+                <label><input type="radio" name="passenger" value="윤선우"> 윤선우</label><br>
+                <label><input type="radio" name="passenger" value="허정수"> 허정수</label>
+            </div>
+            <input type="button" value="탑승자 등록 완료" onclick="submitSelection()">
+        </form>
+    </div>
+    <script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const step = urlParams.get('step');
+        document.getElementById('stepInfo').innerText = `탑승자 등록 완료 (${step}/3)`;
+    }
+
+    function submitSelection() {
+        const form = document.getElementById("registrationForm");
+        const selected = form.elements['passenger'].value;
+        if (selected) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const step = parseInt(urlParams.get('step'));
+            const registered = JSON.parse(urlParams.get('registered'));
+            const id = urlParams.get('id');
+
+            registered.push({ id, name: selected });
+
+            if (step < 3) {
+                window.location.href = `registration1.html?step=${step + 1}&registered=${encodeURIComponent(JSON.stringify(registered))}`;
+            } else {
+                window.location.href = `confirmation.html?registered=${encodeURIComponent(JSON.stringify(registered))}`;
+            }
+        } else {
+            alert("탑승자를 선택해 주세요.");
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>52</title>
+<style>
+    body {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 60px;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .title {
+        color: #008ED8;
+        font-size: 100px;
+        margin-bottom: 20px;
+    }
+    .instruction {
+        color: #ffffff;
+        font-size: 40px;
+        text-align: center;
+    }
+    input[type="button"] {
+        font-size: 40px;
+        background-color: #ffffff;
+        color: #2d2d2d;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <p class="title">비상 탈출 우주선 탑승자 등록</p>
+        <div class="instruction">
+            도착지 설정 : ???<br>탑승 인원 : 3명<br><br>
+            *ID카드가 없는 선원은 투표권이 박탈되었으므로 탑승자 등록 과정에 참여할 수 없습니다.<br>
+            *투표권이 있는 선원들은 돌아가며 탑승자 등록을 진행해 주세요. 이때 탑승자 등록 과정은 비공개로 진행됩니다.<br>
+        </div>
+        <input type="button" value="탑승자 등록 시작하기" onclick="startRegistration()">
+    </div>
+    <script>
+    function startRegistration() {
+        window.location.href = "registration1.html?step=1&registered=[]";
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>선원 확인 완료</title>
+<style>
+    body {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 60px;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .message {
+        color: #008ED8;
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .step {
+        color: #ffffff;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    input[type="button"] {
+        font-size: 40px;
+        background-color: #ffffff;
+        color: #2d2d2d;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div id="confirmationMessage" class="message"></div>
+        <div id="stepInfo" class="step"></div>
+        <input type="button" value="탑승자 등록 진행" onclick="proceedToRegistration()">
+    </div>
+    <script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+        const step = urlParams.get('step');
+        document.getElementById('confirmationMessage').innerText = message;
+        document.getElementById('stepInfo').innerText = `탑승자 등록 완료 (${step}/3)`;
+    }
+
+    function proceedToRegistration() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const step = urlParams.get('step');
+        const registered = urlParams.get('registered');
+        const id = urlParams.get('id');
+        window.location.href = `register_passengers.html?step=${step}&registered=${registered}&id=${id}`;
+    }
+    </script>
+</body>
+</html>

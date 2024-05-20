@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>탑승자 등록 완료</title>
+<style>
+    body {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 60px;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .title {
+        color: #008ED8;
+        font-size: 100px;
+        margin-bottom: 20px;
+    }
+    .message {
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    input[type="button"] {
+        font-size: 40px;
+        background-color: #ffffff;
+        color: #2d2d2d;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <p class="title">탑승자 등록 완료</p>
+        <div class="message">탑승자 등록이 완료되었습니다. 탑승자 목록을 확인해 주세요.</div>
+        <input type="button" value="탑승자 목록 확인" onclick="viewResults()">
+    </div>
+    <script>
+    function viewResults() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const registered = urlParams.get('registered');
+        window.location.href = `result.html?registered=${registered}`;
+    }
+    </script>
+</body>
+</html>

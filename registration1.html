@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>선원 확인</title>
+<style>
+    body {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 60px;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .title {
+        color: #008ED8;
+        font-size: 100px;
+        margin-bottom: 20px;
+    }
+    .step {
+        color: #ffffff;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    input[type="text"], input[type="button"] {
+        font-size: 40px;
+        margin: 10px;
+        padding: 10px;
+        border: none;
+    }
+    input[type="button"] {
+        background-color: #ffffff;
+        color: #2d2d2d;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <p class="title">선원 확인</p>
+        <div id="stepInfo" class="step"></div>
+        <input type="text" id="idInput" placeholder="아이디 입력"><br>
+        <input type="button" value="확인" onclick="validateID()">
+    </div>
+    <script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const step = urlParams.get('step');
+        document.getElementById('stepInfo').innerText = `선원 확인 시작 (${step}/3)`;
+    }
+
+    function validateID() {
+        const id = document.getElementById("idInput").value;
+        let message = '';
+        switch(id) {
+            case '237833234857':
+                message = '노은혜, 선원 확인이 완료되었습니다. 탑승자 등록을 진행해 주세요.';
+                break;
+            case '482545809964':
+                message = '최명석, 선원 확인이 완료되었습니다. 탑승자 등록을 진행해 주세요.';
+                break;
+            case '678258918349':
+                message = '윤선우, 선원 확인이 완료되었습니다. 탑승자 등록을 진행해 주세요.';
+                break;
+            case '988188509327':
+                message = '허정수, 선원 확인이 완료되었습니다. 탑승자 등록을 진행해 주세요.';
+                break;
+            default:
+                alert("잘못된 선원 아이디입니다.");
+                return;
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        const step = urlParams.get('step');
+        const registered = JSON.parse(urlParams.get('registered'));
+        window.location.href = `registration_complete.html?step=${step}&message=${encodeURIComponent(message)}&registered=${encodeURIComponent(JSON.stringify(registered))}&id=${id}`;
+    }
+    </script>
+</body>
+</html>
