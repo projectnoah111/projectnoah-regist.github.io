@@ -47,16 +47,27 @@
         font-size: 80px; /* 글자 크기를 2배로 증가 */
         line-height: 1; /* 행간 조절 */
         text-align: center; /* 옵션 가운데 정렬 */
+        border: 2px solid #ffffff; /* 흰색 테두리 추가 */
+        padding: 20px; /* 내부 여백 추가 */
+        border-radius: 10px; /* 모서리 둥글게 */
     }
     .radioLabel {
         display: flex;
         align-items: center;
         justify-content: center; /* 라벨 가운데 정렬 */
-        margin: 20px 0;
+        margin: 5px 0; /* 라디오 항목들 간의 간격 */
+        font-weight: bold; /* 글자 굵게 */
+        padding: 10px; /* 패딩 추가 */
+        transition: background-color 0.3s; /* 배경색 전환 애니메이션 */
     }
     .radioLabel input[type="radio"] {
         margin-right: 20px;
-        transform: scale(2); /* 라디오 버튼 크기 증가 */
+        transform: scale(3); /* 라디오 버튼 크기 증가 */
+    }
+    .radioLabel.highlight {
+        border: 2px solid #008ED8;
+        background-color: #008ED8;
+        color: #2d2d2d;
     }
     input[type="button"] {
         font-size: 80px; /* 버튼 크기 */
@@ -68,16 +79,10 @@
         font-weight: bold; /* 글자 굵게 */
         border-radius: 20px; /* 모서리 둥글게 */
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8); /* drop shadow */
+        margin-top: 50px; /* 버튼 위쪽의 마진 값, 필요에 따라 값을 변경하세요 */
     }
     input[type="button"]:hover {
         background-color: #f0f0f0; /* 호버 효과 */
-    }
-    .highlight {
-        border: 2px solid #008ED8;
-        background-color: #008ED8;
-        color: #2d2d2d;
-        padding: 10px;
-        margin: 10px;
     }
 </style>
 </head>
