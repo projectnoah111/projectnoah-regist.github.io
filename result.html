@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <title>결과 화면</title>
 <style>
+    @font-face {
+        font-family: 'ONE-Mobile-Title';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
     body {
         background-color: #2d2d2d;
         color: #ffffff;
@@ -14,6 +21,7 @@
         height: 100vh;
         margin: 0;
         font-size: 60px;
+        text-align: center; /* 글자 가운데 정렬 */
     }
     .container {
         display: flex;
@@ -26,28 +34,42 @@
         color: #008ED8;
         font-size: 100px;
         margin-bottom: 20px;
+        font-family: 'ONE-Mobile-Title', sans-serif; /* 폰트 적용 */
     }
     .result {
         font-size: 40px;
         color: #ffffff;
         text-align: center;
+        margin-bottom: 20px;
     }
-    input[type="button"] {
+    .info {
         font-size: 40px;
-        margin: 10px;
-        padding: 10px;
-        border: none;
+        margin-bottom: 20px;
+    }
+    button {
+        font-size: 80px; /* 버튼 크기 */
         background-color: #ffffff;
         color: #2d2d2d;
+        border: none;
+        padding: 20px 40px; /* 패딩 */
         cursor: pointer;
+        font-weight: bold; /* 글자 굵게 */
+        border-radius: 20px; /* 모서리 둥글게 */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8); /* drop shadow */
+        white-space: pre-line; /* 줄 바꿈 적용 */
+        text-align: center; /* 텍스트 가운데 정렬 */
+    }
+    button:hover {
+        background-color: #f0f0f0; /* 호버 효과 */
     }
 </style>
 </head>
 <body>
     <div class="container">
-        <p class="title">결과 화면</p>
+        <p class="title">비상 탈출 우주선<br>탑승자 목록</p>
+        <div class="info">도착지 설정: ???<br>탑승 인원: 3명</div>
         <div id="resultInfo" class="result"></div>
-        <input type="button" value="비상탈출 우주선 가동 결과 확인하기" onclick="viewFinalResult()">
+        <button onclick="viewFinalResult()">비상 탈출 우주선<br>가동 결과 확인하기</button>
     </div>
     <script>
     window.onload = function() {

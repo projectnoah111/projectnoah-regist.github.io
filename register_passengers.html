@@ -21,6 +21,7 @@
         height: 100vh;
         margin: 0;
         font-size: 60px;
+        text-align: center; /* 글자 가운데 정렬 */
     }
     .container {
         display: flex;
@@ -34,7 +35,6 @@
         font-size: 100px;
         margin-bottom: 20px;
         font-family: 'ONE-Mobile-Title', sans-serif; /* 폰트 적용 */
-        text-align: center; /* 가운데 정렬 */
     }
     .instruction {
         color: #ffffff;
@@ -44,12 +44,19 @@
         margin-bottom: 20px; /* 추가된 본문과 입력란 사이의 간격 */
     }
     .options {
-        font-size: 40px;
-        line-height: 2; /* 행간 조절 */
+        font-size: 80px; /* 글자 크기를 2배로 증가 */
+        line-height: 1; /* 행간 조절 */
+        text-align: center; /* 옵션 가운데 정렬 */
     }
-    input[type="radio"] {
-        margin: 20px;
-        transform: scale(3); /* 라디오 버튼 크기 증가 */
+    .radioLabel {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* 라벨 가운데 정렬 */
+        margin: 20px 0;
+    }
+    .radioLabel input[type="radio"] {
+        margin-right: 20px;
+        transform: scale(2); /* 라디오 버튼 크기 증가 */
     }
     input[type="button"] {
         font-size: 80px; /* 버튼 크기 */
@@ -71,7 +78,6 @@
         color: #2d2d2d;
         padding: 10px;
         margin: 10px;
-        font-family: 'ONE-Mobile-Title', sans-serif; /* 폰트 적용 */
     }
 </style>
 </head>
@@ -79,6 +85,13 @@
     <div class="container">
         <p class="title">비상 탈출 우주선<br> 탑승자 등록</p>
         <div id="stepInfo" class="instruction"></div>
+        
+        <div class="instruction">
+            비상 탈출 우주선에 탑승할 탑승자 이름을 선택해 주세요.<br>
+            선원 1명 당 1명만 선택할 수 있습니다.<br>
+            본인이 아닌 다른 선원 선택도 가능합니다.<br>
+        </div>
+        
         <form id="registrationForm">
             <div class="options">
                 <label class="radioLabel"><input type="radio" name="passenger" value="노은혜"> 노은혜</label><br>
