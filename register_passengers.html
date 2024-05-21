@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <title>비상 탈출 우주선 탑승자 등록</title>
 <style>
+    @font-face {
+        font-family: 'ONE-Mobile-Title';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
     body {
         background-color: #2d2d2d;
         color: #ffffff;
@@ -26,39 +33,58 @@
         color: #008ED8;
         font-size: 100px;
         margin-bottom: 20px;
+        font-family: 'ONE-Mobile-Title', sans-serif; /* 폰트 적용 */
+        text-align: center; /* 가운데 정렬 */
+    }
+    .instruction {
+        color: #ffffff;
+        font-size: 40px;
+        text-align: center;
+        line-height: 2; /* 자간 조절, 필요에 따라 값을 변경하세요 */
+        margin-bottom: 20px; /* 추가된 본문과 입력란 사이의 간격 */
     }
     .options {
         font-size: 40px;
-    }
-    .step {
-        color: #ffffff;
-        font-size: 40px;
-        margin-bottom: 20px;
+        line-height: 2; /* 행간 조절 */
     }
     input[type="radio"] {
         margin: 20px;
+        transform: scale(3); /* 라디오 버튼 크기 증가 */
     }
     input[type="button"] {
-        font-size: 40px;
-        margin: 10px;
-        padding: 10px;
-        border: none;
+        font-size: 80px; /* 버튼 크기 */
         background-color: #ffffff;
         color: #2d2d2d;
+        border: none;
+        padding: 20px 40px; /* 패딩 */
         cursor: pointer;
+        font-weight: bold; /* 글자 굵게 */
+        border-radius: 20px; /* 모서리 둥글게 */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8); /* drop shadow */
+    }
+    input[type="button"]:hover {
+        background-color: #f0f0f0; /* 호버 효과 */
+    }
+    .highlight {
+        border: 2px solid #008ED8;
+        background-color: #008ED8;
+        color: #2d2d2d;
+        padding: 10px;
+        margin: 10px;
+        font-family: 'ONE-Mobile-Title', sans-serif; /* 폰트 적용 */
     }
 </style>
 </head>
 <body>
     <div class="container">
-        <p class="title">비상 탈출 우주선 탑승자 등록</p>
-        <div id="stepInfo" class="step"></div>
+        <p class="title">비상 탈출 우주선<br> 탑승자 등록</p>
+        <div id="stepInfo" class="instruction"></div>
         <form id="registrationForm">
             <div class="options">
-                <label><input type="radio" name="passenger" value="노은혜"> 노은혜</label><br>
-                <label><input type="radio" name="passenger" value="최명석"> 최명석</label><br>
-                <label><input type="radio" name="passenger" value="윤선우"> 윤선우</label><br>
-                <label><input type="radio" name="passenger" value="허정수"> 허정수</label>
+                <label class="radioLabel"><input type="radio" name="passenger" value="노은혜"> 노은혜</label><br>
+                <label class="radioLabel"><input type="radio" name="passenger" value="최명석"> 최명석</label><br>
+                <label class="radioLabel"><input type="radio" name="passenger" value="윤선우"> 윤선우</label><br>
+                <label class="radioLabel"><input type="radio" name="passenger" value="허정수"> 허정수</label>
             </div>
             <input type="button" value="탑승자 등록 완료" onclick="submitSelection()">
         </form>
@@ -67,7 +93,16 @@
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const step = urlParams.get('step');
-        document.getElementById('stepInfo').innerText = `탑승자 등록 완료 (${step}/3)`;
+        document.getElementById('stepInfo').innerText = `탑승자 등록 (${step}/3)`;
+
+        // 라디오 버튼 선택 시 스타일 변경
+        const radioLabels = document.querySelectorAll('.radioLabel');
+        radioLabels.forEach(label => {
+            label.addEventListener('click', () => {
+                radioLabels.forEach(l => l.classList.remove('highlight'));
+                label.classList.add('highlight');
+            });
+        });
     }
 
     function submitSelection() {
