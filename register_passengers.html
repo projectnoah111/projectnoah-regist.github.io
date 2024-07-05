@@ -106,7 +106,6 @@
         align-items: center;
         justify-content: center;
         margin: 5px 0;
-        font-weight: bold;
         padding: 10px;
         transition: background-color 0.3s, color 0.3s; /* 글자 색 전환 애니메이션 추가 */
     }
@@ -131,13 +130,12 @@
     }
 
     input[type="button"] {
-        font-size: 3.5vw; /* 버튼 글자 크기 조정 */
+        font-size: 5vw; /* 버튼 글자 크기 조정 */
         background-color: #00BFFF;
         color: #0d0d0d;
         border: 2px solid #00BFFF;
         padding: 15px 20px; /* 패딩 조정 */
         cursor: pointer;
-        font-weight: bold;
         border-radius: 0; /* 직각 모서리로 변경 */
         box-shadow: 0 0 10px #00BFFF;
         width: 100%;
@@ -195,7 +193,7 @@
                 <label class="radioLabel"><input type="radio" name="passenger" value="허정수"> 허정수</label>
             </div>
             <div class="button-container">
-                <input type="button" value="탑승자 등록 완료" onclick="submitSelection()">
+                <input type="button" value="탑승자 등록" onclick="submitSelection()">
                 <div class="button-lines"></div>
             </div>
         </form>
