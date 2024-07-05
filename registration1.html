@@ -11,62 +11,168 @@
         font-style: normal;
     }
 
+    @font-face {
+        font-family: 'Pretendard-Regular';
+        src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+
     body {
-        background-color: #2d2d2d;
-        color: #ffffff;
+        background-color: #0d0d0d;
+        color: #00BFFF;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
-        font-size: 60px;
+        font-size: 48px;
+        font-family: 'Pretendard-Regular', sans-serif;
+        background-image: url('background.png');
+        background-size: cover;
+        background-position: center;
     }
+
     .container {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        box-shadow: 0 0 10px #00BFFF;
+        max-width: 90%;
+        box-sizing: border-box;
+        position: relative;
     }
+
     .title {
-        color: #008ED8;
-        font-size: 100px;
+        color: #00BFFF;
+        font-size: 8vw;
         margin-bottom: 20px;
-        font-family: 'ONE-Mobile-Title', sans-serif; /* 폰트 적용 */
+        text-align: center;
+        text-shadow: 0 0 10px #00BFFF;
+        padding: 10px;
+        width: 100%;
+        font-family: 'ONE-Mobile-Title', sans-serif;
+        position: relative;
+        overflow: hidden;
     }
+
+    .title::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(0, 191, 255, 0.5), rgba(0, 191, 255, 0));
+        z-index: 1;
+        animation: moveLines 3s infinite linear;
+    }
+
+    @keyframes moveLines {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
     .step {
         color: #ffffff;
-        font-size: 40px;
+        font-size: 4vw;
         margin-bottom: 20px;
+        font-family: 'Pretendard-Regular', sans-serif;
     }
+
     .instruction {
-        color: #ffffff;
-        font-size: 40px;
+        color: #FFFFFF;
+        font-size: 4vw;
         text-align: center;
-        line-height: 2; /* 자간 조절, 필요에 따라 값을 변경하세요 */
-        margin-bottom: 20px; /* 추가된 본문과 입력란 사이의 간격 */
+        line-height: 1.2;
+        margin-bottom: 20px;
+        text-shadow: 0 0 5px #000000;
+        font-family: 'Pretendard-Regular', sans-serif;
     }
+
     input[type="text"] {
-        font-size: 56px; /* 크기를 약 70%로 줄임 */
+        font-size: 5vw;
         margin: 10px;
         padding: 14px; /* 패딩도 70%로 줄임 */
-        border: none;
+        border: 2px solid #00BFFF;
+        background: rgba(0, 0, 0, 0.6);
+        color: #00BFFF;
+        text-shadow: none; /* 외부광선 제거 */
+        width: 80%;
+        box-sizing: border-box;
     }
+
+    input[type="text"]::placeholder {
+        text-shadow: none; /* 외부광선을 제거 */
+        color: #cccccc; /* 회색 글자 */
+    }
+
+    input[type="text"]:focus {
+        outline: none;
+        background: rgba(0, 0, 0, 0.6); /* 배경색 유지 */
+        color: #00BFFF; /* 텍스트 색상 유지 */
+    }
+
+    .button-container {
+        position: relative;
+        display: inline-block;
+        margin-top: 20px;
+        overflow: hidden; /* 버튼 밖으로 나가는 애니메이션 숨기기 */
+        width: 80%;
+    }
+
     input[type="button"] {
-        font-size: 80px; /* 버튼 크기를 두 배로 */
-        background-color: #ffffff;
-        color: #2d2d2d;
-        border: none;
-        padding: 20px 40px; /* 패딩을 더 크게 */
+        font-size: 5vw;
+        background-color: #00BFFF;
+        color: #0d0d0d;
+        border: 2px solid #00BFFF;
+        padding: 10px 20px;
         cursor: pointer;
-        font-weight: bold; /* 글자 굵게 */
-        border-radius: 20px; /* 모서리를 더 둥글게 */
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8); /* drop shadow */
+        font-weight: bold;
+        border-radius: 0; /* 직각 모서리로 변경 */
+        box-shadow: 0 0 10px #00BFFF;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: 'ONE-Mobile-Title', sans-serif;
+        position: relative;
+        z-index: 1;
     }
-    input[type="button"]:hover {
-        background-color: #f0f0f0; /* 호버 효과 */
+
+    .button-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200%;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.2),
+            rgba(255, 255, 255, 0.2) 2px,
+            transparent 2px,
+            transparent 4px
+        );
+        z-index: 2;
+        animation: moveLinesDown 3s infinite linear;
+        pointer-events: none;
     }
+
+    @keyframes moveLinesDown {
+        0% {
+            transform: translateY(0%);
+        }
+        100% {
+            transform: translateY(-50%);
+        }
+    }
+
 </style>
 </head>
 <body>
@@ -80,7 +186,10 @@
             아이디는 12자리입니다.<br>
         </div>
         <input type="text" id="idInput" placeholder="아이디 입력"><br>
-        <input type="button" value="스캔하기" onclick="validateID()">
+        <div class="button-container">
+            <input type="button" value="스캔하기" onclick="validateID()">
+            <div class="button-lines"></div>
+        </div>
     </div>
     <script>
     window.onload = function() {
@@ -96,19 +205,19 @@
         switch(id) {
             case '237833234857':
                 name = '노은혜';
-                message = `${name}, 선원 확인이 완료되었습니다. <br>탑승자 등록을 진행해 주세요.`;
+                message = `${name}, 선원 확인이 완료되었습니다. 탑승자 등록을 진행해 주세요.`;
                 break;
             case '482545809964':
                 name = '최명석';
-                message = `${name}, 선원 확인이 완료되었습니다. <br>탑승자 등록을 진행해 주세요.`;
+                message = `${name}, 선원 확인이 완료되었습니다. 탑승자 등록을 진행해 주세요.`;
                 break;
             case '678258918349':
                 name = '윤선우';
-                message = `${name}, 선원 확인이 완료되었습니다. <br>탑승자 등록을 진행해 주세요.`;
+                message = `${name}, 선원 확인이 완료되었습니다. 탑승자 등록을 진행해 주세요.`;
                 break;
             case '988188509327':
                 name = '허정수';
-                message = `${name}, 선원 확인이 완료되었습니다. <br>탑승자 등록을 진행해 주세요.`;
+                message = `${name}, 선원 확인이 완료되었습니다. 탑승자 등록을 진행해 주세요.`;
                 break;
             default:
                 alert("잘못된 선원 아이디입니다.");

@@ -11,36 +11,86 @@
         font-style: normal;
     }
 
+    @font-face {
+        font-family: 'Pretendard-Regular';
+        src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+
     body {
-        background-color: #2d2d2d;
-        color: #ffffff;
+        background-color: #0d0d0d;
+        color: #00BFFF;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
-        font-size: 60px;
-        text-align: center; /* 글자 가운데 정렬 */
+        font-size: 48px;
+        font-family: 'Pretendard-Regular', sans-serif;
+        background-image: url('background.png');
+        background-size: cover;
+        background-position: center;
+        text-align: center;
     }
+
     .container {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        box-shadow: 0 0 10px #00BFFF;
+        max-width: 90%;
+        box-sizing: border-box;
+        position: relative;
     }
+
     .title {
-        color: #008ED8;
-        font-size: 100px;
+        color: #00BFFF;
+        font-size: 8vw;
         margin-bottom: 20px;
-        font-family: 'ONE-Mobile-Title', sans-serif; /* 폰트 적용 */
-    }
-    .result {
-        font-size: 40px;
-        color: #ffffff;
         text-align: center;
+        text-shadow: 0 0 10px #00BFFF;
+        padding: 10px;
+        width: 100%;
+        font-family: 'ONE-Mobile-Title', sans-serif;
+        position: relative;
+        overflow: hidden;
     }
+
+    .title::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(0, 191, 255, 0.5), rgba(0, 191, 255, 0));
+        z-index: 1;
+        animation: moveLines 3s infinite linear;
+    }
+
+    @keyframes moveLines {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    .result {
+        font-size: 4vw;
+        color: #FFFFFF;
+        text-align: center;
+        margin-bottom: 20px;
+        text-shadow: 0 0 5px #000000;
+        font-family: 'Pretendard-Regular', sans-serif;
+    }
+
 </style>
 </head>
 <body>
@@ -48,9 +98,17 @@
         <p class="title">비상 탈출 우주선 가동 결과</p>
         <div class="result">
             도착지: 지구<br>
-            생존 인원: 3/3<br><br>
+            생존자: <span id="passengerNames"></span><br><br>
             엔딩북 n페이지를 확인하세요.
         </div>
     </div>
+    <script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const registered = JSON.parse(decodeURIComponent(urlParams.get('registered')));
+        const uniquePassengers = Array.from(new Set(registered.map(passenger => passenger.name)));
+        document.getElementById('passengerNames').textContent = uniquePassengers.join(', ');
+    }
+    </script>
 </body>
 </html>
