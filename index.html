@@ -95,7 +95,7 @@
         position: relative;
         display: inline-block;
         margin-top: 20px;
-        overflow: hidden; /* 버튼 밖으로 나가는 애니메이션 숨기기 */
+        overflow: hidden; 
         width: 80%;
     }
 
@@ -106,7 +106,7 @@
         border: 2px solid #00BFFF;
         padding: 10px 20px;
         cursor: pointer;
-        border-radius: 0; /* 직각 모서리로 변경 */
+        border-radius: 0; 
         box-shadow: 0 0 10px #00BFFF;
         width: 100%;
         box-sizing: border-box;
@@ -142,6 +142,42 @@
         }
     }
 
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 100; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5); 
+    }
+
+    .modal-content {
+        background-color: #000;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        text-align: center;
+        color: #fff;
+    }
+
+    .modal-button {
+        margin-top: 20px;
+        font-size: 1.5em;
+        padding: 10px 20px;
+        border: none;
+        background-color: #00BFFF;
+        color: #0d0d0d;
+        cursor: pointer;
+        font-family: 'ONE-Mobile-Title', sans-serif;
+    }
+
+    .smaller-text {
+        font-size: 70%;
+    }
 </style>
 </head>
 <body>
@@ -157,9 +193,26 @@
             <div class="button-lines"></div>
         </div>
     </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p id="modalText">비상 탈출 우주선 탑승자 등록은<br><u>1대의 스마트폰으로</u><br>선원 모두가 다 같이 진행합니다.<br><br>
+                <span class="smaller-text">등록 준비를 마쳤다면, 다음 버튼을 클릭해<br>탑승자 등록을 시작해주세요.</span></p></p>
+            <button class="modal-button" onclick="closeModal()">확인</button>
+        </div>
+    </div>
+
     <script>
     function startRegistration() {
         window.location.href = "registration1.html?step=1&registered=[]";
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    window.onload = function() {
+        document.getElementById("myModal").style.display = "block";
     }
     </script>
 </body>

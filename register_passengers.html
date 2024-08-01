@@ -93,8 +93,8 @@
     }
 
     .options {
-        font-size: 5vw; /* 글자 크기를 조정 */
-        line-height: 1.2; /* 행간 조절 */
+        font-size: 5vw;
+        line-height: 1.2;
         text-align: center;
         border: 2px solid #ffffff;
         padding: 20px;
@@ -108,36 +108,36 @@
         margin: 5px 0;
         padding: 10px;
         font-weight: 650;
-        transition: background-color 0.3s, color 0.3s; /* 글자 색 전환 애니메이션 추가 */
+        transition: background-color 0.3s, color 0.3s;
     }
 
     .radioLabel input[type="radio"] {
         margin-right: 20px;
-        transform: scale(1.5); /* 라디오 버튼 크기 증가 */
+        transform: scale(1.5);
     }
 
     .radioLabel.highlight {
         border: 2px solid #008ED8;
         background-color: #008ED8;
-        color: #000000; /* 글자 색상을 검은색으로 변경 */
+        color: #000000;
     }
 
     .button-container {
         position: relative;
         display: inline-block;
         margin-top: 20px;
-        overflow: hidden; /* 버튼 밖으로 나가는 애니메이션 숨기기 */
+        overflow: hidden;
         width: 100%;
     }
 
     input[type="button"] {
-        font-size: 5vw; /* 버튼 글자 크기 조정 */
+        font-size: 5vw;
         background-color: #00BFFF;
         color: #0d0d0d;
         border: 2px solid #00BFFF;
-        padding: 15px 20px; /* 패딩 조정 */
+        padding: 15px 20px;
         cursor: pointer;
-        border-radius: 0; /* 직각 모서리로 변경 */
+        border-radius: 0;
         box-shadow: 0 0 10px #00BFFF;
         width: 100%;
         box-sizing: border-box;
@@ -205,7 +205,7 @@
         const step = urlParams.get('step');
         document.getElementById('stepInfo').innerText = `탑승자 등록 (${step}/3)`;
 
-        // 라디오 버튼 선택 시 스타일 변경
+
         const radioLabels = document.querySelectorAll('.radioLabel');
         radioLabels.forEach(label => {
             label.addEventListener('click', () => {
